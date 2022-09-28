@@ -1,0 +1,14 @@
+<% if params[:user_id].nil? %>
+  <%= render 'search_form' %>
+<% else %>
+  <%= render 'search_form' %>
+  <% if params[:user_id].empty? %>
+    <p>Displaying latest public photos</p>
+  <% else %>
+    <p>Displaying photos uploaded by <%= params[:user_id] %></p>
+  <% end %>
+  
+  <% @photos.each do |photo| %>
+    <img src="<%= Flickr.url_n(photo) %>" >
+  <% end %>
+<% end %>
