@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 
   def index
     begin
-      flickr = Flickr.new
+      flickr = Flickr.new ENV['FLICKR_KEY'], ENV['FLICKR_SECRET']
       unless params[:user_id].blank?
         @photos = flickr.photos.search(user_id: params[:user_id])
       else
